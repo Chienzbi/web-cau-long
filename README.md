@@ -13,4 +13,10 @@ Workflow `.github/workflows/ci-cd.yml`:
 
 Bật Pages một lần: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 
+## Theo dõi công khai và cập nhật dữ liệu
+
+- Ai mở https://chienzbi.github.io/web-cau-long/ đều **chỉ xem** dữ liệu trong `data.json` (đội, lịch, kết quả, bảng xếp hạng). Trang tự tải lại dữ liệu mỗi phút.
+- BTC nhập liệu trên máy: mở `index.html` trực tiếp từ ổ đĩa, hoặc thêm `?edit` vào địa chỉ web.
+- Để cập nhật cho mọi người: bấm **Sao lưu** trong trang, đổi tên file tải về thành `data.json`, thay vào repo rồi push vào `main`. CI sẽ kiểm tra và triển khai lại.
+
 Chạy kiểm tra trên máy: `node scripts/check.js`

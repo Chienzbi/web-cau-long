@@ -18,6 +18,21 @@ const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
 const used = new Set(scripts.flatMap(m => [...m[1].matchAll(/\$\('([A-Za-z0-9_-]+)'\)/g)].map(x => x[1])));
 for (const id of used) if (!ids.has(id)) errors.push(`Script gọi $('${id}') nhưng HTML không có id="${id}".`);
 
+// 3. data.json (dữ liệu giải công khai) phải đọc được và các tham chiếu id phải khớp.
+const dataFile = path.join(__dirname, '..', 'data.json');
+if (fs.existsSync(dataFile)) {
+  try {
+    const d = JSON.parse(fs.readFileSync(dataFile, 'utf8'));
+    for (const k of ['players', 'teams', 'matches']) if (!Array.isArray(d[k])) errors.push(`data.json thiếu mảng "${k}".`);
+    if (!errors.length) {
+      const pid = new Set(d.players.map(p => p.id)), tid = new Set(d.teams.map(t => t.id));
+      for (const t of d.teams) for (const p of [t.maleId, t.femaleId, t.secondMaleId]) if (p && !pid.has(p)) errors.push(`Đội ${t.id} tham chiếu VĐV không tồn tại: ${p}`);
+      for (const m of d.matches) for (const t of [m.aId, m.bId]) if (!tid.has(t)) errors.push(`Trận ${m.id} tham chiếu đội không tồn tại: ${t}`);
+      console.log(`✓ data.json: ${d.players.length} VĐV, ${d.teams.length} đội, ${d.matches.length} trận.`);
+    }
+  } catch (e) { errors.push('data.json không đọc được: ' + e.message); }
+}
+
 if (errors.length) {
   console.error(errors.map(e => '✗ ' + e).join('\n'));
   process.exit(1);

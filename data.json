@@ -1,0 +1,530 @@
+{
+  "version": 1,
+  "players": [
+    {
+      "id": "id_mwj60hrf_bm675uu6",
+      "name": "Minh",
+      "gender": "male",
+      "tier": "a",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj60tqz_ixj3dbp5",
+      "name": "Quốc",
+      "gender": "male",
+      "tier": "a",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj613f7_pppzuyaq",
+      "name": "Thắng",
+      "gender": "male",
+      "tier": "b",
+      "mod": 0,
+      "note": ""
+    },
+    {
+      "id": "id_mwj61a2z_y2g2oo18",
+      "name": "Hoàng",
+      "gender": "male",
+      "tier": "c",
+      "mod": 0,
+      "note": ""
+    },
+    {
+      "id": "id_mwj61eoj_rm7ctnm4",
+      "name": "Linh",
+      "gender": "male",
+      "tier": "b",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj61v9f_l1i1cdit",
+      "name": "Thuần",
+      "gender": "male",
+      "tier": "b",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj625m4_w0git31c",
+      "name": "Thái",
+      "gender": "male",
+      "tier": "b",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj62iwj_7zbjnwzm",
+      "name": "Dũng",
+      "gender": "male",
+      "tier": "a",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj62ms3_7diwkhrr",
+      "name": "Chiến",
+      "gender": "male",
+      "tier": "b",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj6350c_fgnn84xg",
+      "name": "Đức",
+      "gender": "male",
+      "tier": "b",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj63i0k_070suodi",
+      "name": "Quang",
+      "gender": "male",
+      "tier": "a",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj64bsb_t1ylc6jd",
+      "name": "Thu",
+      "gender": "female",
+      "tier": "b",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj64mia_qlxnh48x",
+      "name": "Huyền",
+      "gender": "female",
+      "tier": "c",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj64s2z_ti7nysjy",
+      "name": "Nhung",
+      "gender": "female",
+      "tier": "c",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj64v5f_9h52l8hn",
+      "name": "Ngọc",
+      "gender": "female",
+      "tier": "c",
+      "mod": -1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj64yln_y68pddbo",
+      "name": "Diệp",
+      "gender": "female",
+      "tier": "c",
+      "mod": 0,
+      "note": ""
+    },
+    {
+      "id": "id_mwj6516b_cuo2wcf5",
+      "name": "Loan",
+      "gender": "female",
+      "tier": "c",
+      "mod": 1,
+      "note": ""
+    },
+    {
+      "id": "id_mwj6b0dn_02vvl46j",
+      "name": "Huyền 2",
+      "gender": "female",
+      "tier": "c",
+      "mod": 0,
+      "note": ""
+    }
+  ],
+  "teams": [
+    {
+      "id": "id_mwj6hs9j_5f9fnpbf",
+      "maleId": "id_mwj60tqz_ixj3dbp5",
+      "femaleId": "id_mwj64yln_y68pddbo",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_hemgfo7t",
+      "maleId": "id_mwj61v9f_l1i1cdit",
+      "femaleId": "id_mwj64bsb_t1ylc6jd",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_537wq6c8",
+      "maleId": "id_mwj62iwj_7zbjnwzm",
+      "femaleId": "id_mwj6b0dn_02vvl46j",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_zuxu9r2d",
+      "maleId": "id_mwj613f7_pppzuyaq",
+      "femaleId": "id_mwj64mia_qlxnh48x",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_bb3x8c36",
+      "maleId": "id_mwj60hrf_bm675uu6",
+      "femaleId": "id_mwj64s2z_ti7nysjy",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_8ct0r7hu",
+      "maleId": "id_mwj62ms3_7diwkhrr",
+      "femaleId": "id_mwj6516b_cuo2wcf5",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_ntufsq9u",
+      "maleId": "id_mwj63i0k_070suodi",
+      "femaleId": "id_mwj64v5f_9h52l8hn",
+      "secondMaleId": null
+    },
+    {
+      "id": "id_mwj6hs9j_59erfxos",
+      "maleId": "id_mwj61a2z_y2g2oo18",
+      "femaleId": null,
+      "secondMaleId": "id_mwj6350c_fgnn84xg"
+    },
+    {
+      "id": "id_mwj6hs9j_6gzwx11o",
+      "maleId": "id_mwj625m4_w0git31c",
+      "femaleId": null,
+      "secondMaleId": "id_mwj61eoj_rm7ctnm4"
+    }
+  ],
+  "matches": [
+    {
+      "id": "id_mwk1o18j_e5pq1sxt",
+      "aId": "id_mwj6hs9j_bb3x8c36",
+      "bId": "id_mwj6hs9j_6gzwx11o",
+      "round": 1,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_0bnxgkmb",
+      "aId": "id_mwj6hs9j_5f9fnpbf",
+      "bId": "id_mwj6hs9j_zuxu9r2d",
+      "round": 1,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_snqg4cl2",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_hemgfo7t",
+      "round": 1,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_u4bu5d4w",
+      "aId": "id_mwj6hs9j_ntufsq9u",
+      "bId": "id_mwj6hs9j_59erfxos",
+      "round": 1,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_27v9t99o",
+      "aId": "id_mwj6hs9j_537wq6c8",
+      "bId": "id_mwj6hs9j_6gzwx11o",
+      "round": 2,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_ksupbwcr",
+      "aId": "id_mwj6hs9j_bb3x8c36",
+      "bId": "id_mwj6hs9j_5f9fnpbf",
+      "round": 2,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_6mnbzors",
+      "aId": "id_mwj6hs9j_hemgfo7t",
+      "bId": "id_mwj6hs9j_zuxu9r2d",
+      "round": 2,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_a6fobutn",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_59erfxos",
+      "round": 2,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_wq1f4iji",
+      "aId": "id_mwj6hs9j_6gzwx11o",
+      "bId": "id_mwj6hs9j_ntufsq9u",
+      "round": 3,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_4g0tlawf",
+      "aId": "id_mwj6hs9j_5f9fnpbf",
+      "bId": "id_mwj6hs9j_537wq6c8",
+      "round": 3,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_gce13syc",
+      "aId": "id_mwj6hs9j_bb3x8c36",
+      "bId": "id_mwj6hs9j_hemgfo7t",
+      "round": 3,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_zmnpiiim",
+      "aId": "id_mwj6hs9j_zuxu9r2d",
+      "bId": "id_mwj6hs9j_59erfxos",
+      "round": 3,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_bi5d4yqn",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_6gzwx11o",
+      "round": 4,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_5kzbxmks",
+      "aId": "id_mwj6hs9j_ntufsq9u",
+      "bId": "id_mwj6hs9j_5f9fnpbf",
+      "round": 4,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_rdjpstea",
+      "aId": "id_mwj6hs9j_hemgfo7t",
+      "bId": "id_mwj6hs9j_537wq6c8",
+      "round": 4,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_b9gj49gs",
+      "aId": "id_mwj6hs9j_bb3x8c36",
+      "bId": "id_mwj6hs9j_59erfxos",
+      "round": 4,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_kbndnp6u",
+      "aId": "id_mwj6hs9j_zuxu9r2d",
+      "bId": "id_mwj6hs9j_6gzwx11o",
+      "round": 5,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_zkx74sof",
+      "aId": "id_mwj6hs9j_5f9fnpbf",
+      "bId": "id_mwj6hs9j_8ct0r7hu",
+      "round": 5,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_h0h89s0u",
+      "aId": "id_mwj6hs9j_ntufsq9u",
+      "bId": "id_mwj6hs9j_hemgfo7t",
+      "round": 5,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_lh1mxcn7",
+      "aId": "id_mwj6hs9j_537wq6c8",
+      "bId": "id_mwj6hs9j_59erfxos",
+      "round": 5,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_3lod5sjq",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_bb3x8c36",
+      "round": 6,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_s7nu2fiq",
+      "aId": "id_mwj6hs9j_6gzwx11o",
+      "bId": "id_mwj6hs9j_5f9fnpbf",
+      "round": 6,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_pbhtfbej",
+      "aId": "id_mwj6hs9j_zuxu9r2d",
+      "bId": "id_mwj6hs9j_ntufsq9u",
+      "round": 6,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_2fpev3xm",
+      "aId": "id_mwj6hs9j_59erfxos",
+      "bId": "id_mwj6hs9j_hemgfo7t",
+      "round": 6,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_7g0wjzxq",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_537wq6c8",
+      "round": 7,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_zkocrawu",
+      "aId": "id_mwj6hs9j_ntufsq9u",
+      "bId": "id_mwj6hs9j_bb3x8c36",
+      "round": 7,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_nqks3rry",
+      "aId": "id_mwj6hs9j_59erfxos",
+      "bId": "id_mwj6hs9j_5f9fnpbf",
+      "round": 7,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_4y0ynbc8",
+      "aId": "id_mwj6hs9j_6gzwx11o",
+      "bId": "id_mwj6hs9j_hemgfo7t",
+      "round": 7,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_qk9ppu2o",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_zuxu9r2d",
+      "round": 8,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_z0ktyvpt",
+      "aId": "id_mwj6hs9j_59erfxos",
+      "bId": "id_mwj6hs9j_6gzwx11o",
+      "round": 8,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_ohwx8zlc",
+      "aId": "id_mwj6hs9j_ntufsq9u",
+      "bId": "id_mwj6hs9j_537wq6c8",
+      "round": 8,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_vdn20jcc",
+      "aId": "id_mwj6hs9j_hemgfo7t",
+      "bId": "id_mwj6hs9j_5f9fnpbf",
+      "round": 8,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_shmqyhys",
+      "aId": "id_mwj6hs9j_bb3x8c36",
+      "bId": "id_mwj6hs9j_zuxu9r2d",
+      "round": 9,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_us2w9j6g",
+      "aId": "id_mwj6hs9j_8ct0r7hu",
+      "bId": "id_mwj6hs9j_ntufsq9u",
+      "round": 9,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    },
+    {
+      "id": "id_mwk1o18j_qzb2qqbs",
+      "aId": "id_mwj6hs9j_537wq6c8",
+      "bId": "id_mwj6hs9j_bb3x8c36",
+      "round": 9,
+      "sets": null,
+      "scoreA": null,
+      "scoreB": null
+    }
+  ],
+  "settings": {
+    "name": "Cúp ao làng lông thủ",
+    "date": "",
+    "place": "",
+    "target": 21,
+    "lateMinutes": 10,
+    "notes": ""
+  }
+}
