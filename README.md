@@ -17,6 +17,7 @@ Bật Pages một lần: **Settings → Pages → Build and deployment → Sourc
 
 - Ai mở https://chienzbi.github.io/web-cau-long/ đều **chỉ xem** dữ liệu trong `data.json` (đội, lịch, kết quả, bảng xếp hạng). Trang tự tải lại dữ liệu mỗi phút.
 - BTC nhập liệu trên máy: mở `index.html` trực tiếp từ ổ đĩa, hoặc thêm `?edit` vào địa chỉ web.
-- Để cập nhật cho mọi người: bấm **Sao lưu** trong trang, đổi tên file tải về thành `data.json`, thay vào repo rồi push vào `main`. CI sẽ kiểm tra và triển khai lại.
+- Cập nhật tự động: nút **🌐 Đăng lên web** (và mỗi lần **Tạo lịch thi đấu**) ghi dữ liệu hiện tại vào `data.json` trên GitHub, CI tự triển khai lại sau khoảng 1–2 phút. Lần đầu cần dán token: tạo tại https://github.com/settings/personal-access-tokens/new (Fine-grained, chỉ chọn repo này, quyền **Contents: Read and write**). Token chỉ lưu trong trình duyệt của BTC.
+- Cập nhật thủ công: bấm **Sao lưu**, đổi tên file tải về thành `data.json`, thay vào repo rồi push vào `main`.
 
 Chạy kiểm tra trên máy: `node scripts/check.js`
