@@ -1,0 +1,63 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Chỉ giữ một lần triển khai chạy tại một thời điểm; bản mới hủy bản cũ đang chờ.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Kiểm tra
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Kiểm tra cú pháp script và id trong index.html
+        run: node scripts/check.js
+
+  build:
+    name: Đóng gói
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Chép file tĩnh vào dist
+        run: |
+          mkdir dist
+          cp index.html dist/index.html
+          touch dist/.nojekyll
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: dist
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: dist
+
+  deploy:
+    name: Triển khai GitHub Pages
+    needs: build
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
