@@ -137,7 +137,7 @@ body{
 .sets-form{grid-template-columns:auto 1fr 20px 1fr}.sets-form .btn{grid-column:1/-1}.set-lbl{font-size:12px;font-weight:700;color:#4b6f89}
 .viewer-only{display:none}
 body.viewer .viewer-only{display:block}
-body.viewer #demoBtn,body.viewer #clearBtn,body.viewer #resetDraw,body.viewer #createSchedule,body.viewer #clearSchedule,body.viewer #goMatches,body.viewer #backupBtn,body.viewer #publishBtn,body.viewer #restoreBtn,body.viewer #addMale,body.viewer #addFemale,body.viewer .level-row,body.viewer textarea,body.viewer label.field-label,body.viewer .icon-btn,body.viewer .lvl-select,body.viewer [data-score-form],body.viewer .match-actions,body.viewer .settings-area,body.viewer #drawStage{display:none!important}
+body.viewer #demoBtn,body.viewer #clearBtn,body.viewer #resetDraw,body.viewer #createSchedule,body.viewer #clearSchedule,body.viewer #goMatches,body.viewer #backupBtn,body.viewer #publishBtn,body.viewer #pullBtn,body.viewer #viewBtn,body.viewer #restoreBtn,body.viewer #addMale,body.viewer #addFemale,body.viewer .level-row,body.viewer textarea,body.viewer label.field-label,body.viewer .icon-btn,body.viewer .lvl-select,body.viewer [data-score-form],body.viewer .match-actions,body.viewer .settings-area,body.viewer #drawStage{display:none!important}
 .level-row{display:flex;align-items:center;gap:8px;margin-top:10px}.level-row label{margin:0}
 .icon-btn{color:#7890a3}
 .icon-btn:hover{background:#fff0f3;color:#df4b6b}
@@ -266,7 +266,7 @@ tbody tr.top{background:#edfbf7}
   <div class="shell">
     <header class="topbar">
       <div class="logo"><span class="logo-mark" aria-hidden="true"></span><div><strong>BADMINTON AO LÀNG CUP</strong><small>Giải cầu lông giao lưu rèn luyện sức khỏe</small></div></div>
-      <div class="top-actions"><span class="pill"><span class="dot"></span></span><button class="btn sm ghost" id="publishBtn" title="Đăng dữ liệu hiện tại lên web công khai">🌐 Đăng lên web</button><button class="btn sm ghost" id="backupBtn" title="Tải bản sao dữ liệu">⬇ Sao lưu</button><button class="btn sm ghost" id="restoreBtn" title="Nạp dữ liệu sao lưu">⬆ Khôi phục</button><input type="file" id="restoreInput" accept=".json,application/json" hidden /></div>
+      <div class="top-actions"><span class="pill"><span class="dot"></span></span><button class="btn sm ghost" id="viewBtn" title="Xem như khách (chỉ đọc)">👁 Xem như khách</button><button class="btn sm ghost" id="pullBtn" title="Lấy dữ liệu đang đăng trên web về máy này">⟳ Lấy từ web</button><button class="btn sm ghost" id="publishBtn" title="Đăng dữ liệu hiện tại lên web công khai">🌐 Đăng lên web</button><button class="btn sm ghost" id="backupBtn" title="Tải bản sao dữ liệu">⬇ Sao lưu</button><button class="btn sm ghost" id="restoreBtn" title="Nạp dữ liệu sao lưu">⬆ Khôi phục</button><input type="file" id="restoreInput" accept=".json,application/json" hidden /></div>
     </header>
     <div class="hero">
       <div class="hero-copy">
@@ -282,7 +282,7 @@ tbody tr.top{background:#edfbf7}
       </div>
       <div class="hero-logo-aside" aria-hidden="true"><div class="hero-logo-halo"><div class="hero-logo-figure"></div></div><span class="hero-spark hero-spark-1">✦</span><span class="hero-spark hero-spark-2">✧</span></div>
     </div>
-    <div class="info-strip viewer-only" id="viewerBanner" style="margin:0 0 17px">👀 Bạn đang xem dữ liệu công khai của giải (tự cập nhật mỗi phút). Chỉ BTC mới chỉnh sửa được.</div>
+    <div class="info-strip viewer-only" id="viewerBanner" style="margin:0 0 17px">👀 Bạn đang xem dữ liệu công khai của giải (tự cập nhật mỗi phút). Chỉ BTC mới chỉnh sửa được. <a href="?edit" style="color:inherit;font-weight:700">BTC: chỉnh sửa</a></div>
     <nav class="nav" aria-label="Các chức năng">
       <button class="active" data-tab="players"><span class="num">1</span> Danh sách VĐV</button>
       <button data-tab="draw"><span class="num">2</span> Quay ghép đôi</button>
@@ -355,7 +355,15 @@ tbody tr.top{background:#edfbf7}
   const STORAGE_KEY = 'badminton_mix_cup_single_html_v1'; // Giữ cùng khóa để đọc dữ liệu từ bản cũ
   // Chế độ xem công khai: khi mở qua http(s) (GitHub Pages) và không có ?edit, trang chỉ đọc data.json, không sửa, không ghi localStorage.
   // Mở file trực tiếp trên máy (file://) hoặc thêm ?edit vào địa chỉ để chỉnh sửa như bình thường.
-  const VIEWER = /^https?:$/.test(location.protocol) && !new URLSearchParams(location.search).has('edit');
+  // BTC: mở link có ?edit một lần là máy đó nhớ chế độ chỉnh sửa; ?view để quay lại xem như khách.
+  const qs = new URLSearchParams(location.search);
+  let isEditor = qs.has('edit');
+  try {
+    if (qs.has('edit')) localStorage.setItem('badminton_editor', '1');
+    else if (qs.has('view')) localStorage.removeItem('badminton_editor');
+    else isEditor = localStorage.getItem('badminton_editor') === '1';
+  } catch (e) {}
+  const VIEWER = /^https?:$/.test(location.protocol) && !isEditor;
   const $ = id => document.getElementById(id);
   const defaults = () => ({ version:1, players:[], teams:[], matches:[], settings:{name:'Cúp ao làng lông thủ',date:'',place:'',target:21,lateMinutes:10,notes:''} });
   let state;
@@ -835,6 +843,18 @@ tbody tr.top{background:#edfbf7}
     finally{publishing=false;if(publishQueued){publishQueued=false;publishToWeb(true)}}
   }
   $('publishBtn').onclick=()=>publishToWeb(false);
+  // Lấy dữ liệu đang đăng trên web (data.json) về máy này, ví dụ khi mở trên điện thoại lần đầu.
+  async function pullFromWeb(manual){
+    try{
+      const r=await fetch('data.json',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);
+      const next=normalize(await r.json());
+      if(manual&&(state.players.length||state.teams.length||state.matches.length)&&!await askConfirmation('Dữ liệu trên máy này sẽ bị thay bằng dữ liệu đang đăng trên web.', 'Lấy dữ liệu từ web?', 'Thay bằng dữ liệu web'))return;
+      state=next;update();notify('Đã lấy dữ liệu từ web về máy này.');
+    }catch(err){if(manual)notify('Không lấy được dữ liệu từ web: '+(err?.message||err),'error')}
+  }
+  $('pullBtn').onclick=()=>pullFromWeb(true);
+  $('viewBtn').onclick=()=>{location.href=location.pathname+'?view'};
+  if(!/^https?:$/.test(location.protocol)){$('pullBtn').hidden=true;$('viewBtn').hidden=true}
   $('backupBtn').onclick=()=>{download(JSON.stringify(state,null,2),'badminton-mix-cup-backup.json','application/json;charset=utf-8');notify('Đã xuất file sao lưu JSON.')};
   $('restoreBtn').onclick=()=>$('restoreInput').click();
   $('restoreInput').onchange=async e=>{const file=e.target.files?.[0];e.target.value='';if(!file)return;if(file.size>2e6){notify('File quá lớn (giới hạn 2 MB).','error');return}
@@ -849,6 +869,8 @@ tbody tr.top{background:#edfbf7}
   $('csvBtn').onclick=()=>{if(!state.teams.length){notify('Chưa có đội để xuất.','error');return}const rows=[['Hạng','Đội','Loại đội','VĐV 1','VĐV 2','Số trận','Thắng','Hòa','Thua','Điểm xếp hạng','Điểm ghi','Điểm thua','Hiệu số','Căn cứ xếp hạng'],...standings().map(s=>[s.rank,teamName(s.team),teamKind(s.team),getPlayer(s.team.maleId)?.name,teamSecondPlayer(s.team)?.name,s.played,s.wins,s.draws,s.losses,fmtPoints(s.points),s.scored,s.conceded,s.diff,s.reason])];download('\ufeff'+rows.map(r=>r.map(csvEscape).join(',')).join('\r\n'),'bang-xep-hang-cau-long.csv','text/csv;charset=utf-8');notify('Đã xuất bảng xếp hạng CSV.')};
   $('printBtn').onclick=()=>window.print();
   render();
+  // Máy BTC mở lần đầu (chưa có dữ liệu): tự lấy dữ liệu đang đăng trên web.
+  if(!VIEWER&&/^https?:$/.test(location.protocol)&&!state.players.length&&!state.teams.length&&!state.matches.length)pullFromWeb(false);
   if(VIEWER){
     document.body.classList.add('viewer');
     let lastSig='',failed=false;

@@ -24,6 +24,6 @@ Bật Pages một lần: **Settings → Pages → Build and deployment → Sourc
 
 - Giao diện tự co theo màn hình: thanh tab nằm dưới đáy, bảng xếp hạng rút gọn cột.
 - Cài lên màn hình chính: Android (Chrome) menu ⋮ → **Cài đặt ứng dụng** / **Thêm vào màn hình chính**; iPhone (Safari) nút Chia sẻ → **Thêm vào Màn hình chính**.
-- Nhập liệu trên điện thoại: mở `https://chienzbi.github.io/web-cau-long/?edit`. Dữ liệu chỉnh sửa lưu trong trình duyệt của điện thoại đó.
+- Nhập liệu trên điện thoại: mở `https://chienzbi.github.io/web-cau-long/?edit` một lần, máy sẽ nhớ chế độ chỉnh sửa (dùng `?view` hoặc nút **Xem như khách** để quay lại chế độ xem). Lần đầu máy tự lấy dữ liệu đang đăng trên web; nút **Lấy từ web** lấy lại bất cứ lúc nào. Dữ liệu chỉnh sửa lưu trong trình duyệt của máy đó.
 
 Chạy kiểm tra trên máy: `node scripts/check.js`
