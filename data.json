@@ -208,27 +208,54 @@
       "aId": "id_mwj6hs9j_6gzwx11o",
       "bId": "id_mwj6hs9j_5f9fnpbf",
       "round": 1,
-      "sets": null,
-      "scoreA": null,
-      "scoreB": null
+      "sets": [
+        [
+          21,
+          15
+        ],
+        [
+          19,
+          21
+        ]
+      ],
+      "scoreA": 40,
+      "scoreB": 36
     },
     {
       "id": "id_mwmx4ob5_ngrsnn5e",
       "aId": "id_mwj6hs9j_8ct0r7hu",
       "bId": "id_mwj6hs9j_537wq6c8",
       "round": 1,
-      "sets": null,
-      "scoreA": null,
-      "scoreB": null
+      "sets": [
+        [
+          10,
+          21
+        ],
+        [
+          7,
+          21
+        ]
+      ],
+      "scoreA": 17,
+      "scoreB": 42
     },
     {
       "id": "id_mwmx4ob5_efa5mnjx",
       "aId": "id_mwj6hs9j_6gzwx11o",
       "bId": "id_mwj6hs9j_zuxu9r2d",
       "round": 1,
-      "sets": null,
-      "scoreA": null,
-      "scoreB": null
+      "sets": [
+        [
+          21,
+          13
+        ],
+        [
+          21,
+          17
+        ]
+      ],
+      "scoreA": 42,
+      "scoreB": 30
     },
     {
       "id": "id_mwmx4ob5_1vt0kcqm",
