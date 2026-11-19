@@ -592,6 +592,12 @@ tbody tr.top{background:#edfbf7}
   $('resetDraw').onclick=async()=>{if(spinning){notify('Vui lòng đợi quay xong.');return}if(!state.teams.length){notify('Chưa có đội để bốc thăm lại.');return}if(!await askConfirmation('Bốc thăm lại sẽ xóa TOÀN BỘ đội, lịch thi đấu và tỷ số đã nhập.\nDanh sách VĐV nam và nữ được giữ nguyên.', 'Bốc thăm lại từ đầu?', 'Xóa đội & bốc thăm lại'))return;state.teams=[];state.matches=[];$('drawMale').textContent='? ? ?';$('drawFemale').textContent='? ? ?';setDrawSecondGender(false);update();notify('Đã mở lại lượt bốc thăm.');};
   $('goMatches').onclick=()=>switchTab('matches');
 
+  // Các trận đã đấu, luôn giữ nguyên ở đầu lịch theo đúng thứ tự: [VĐV của đội A, VĐV của đội B] (so tên không dấu, không phân biệt hoa thường).
+  // Các trận còn lại được xếp ngẫu nhiên. Muốn bỏ thì để mảng rỗng: []
+  const PINNED_OPENING=[[['thái','linh'],['quốc','diệp']],[['chiến','loan'],['dũng','huyền 2']],[['thái','linh'],['thắng','huyền']]];
+  function teamByNames(names){const want=names.map(plain).sort().join('+');return state.teams.find(t=>[t.maleId,t.femaleId||t.secondMaleId].map(pid=>plain(getPlayer(pid)?.name||'')).sort().join('+')===want)||null}
+  // Trả về [[idĐộiA,idĐộiB],...]; nếu có đội không tìm thấy hoặc trận bị trùng/không hợp lệ thì bỏ qua toàn bộ danh sách ghim.
+  function pinnedOpening(){const out=[],seen=new Set();for(const [a,b] of PINNED_OPENING){const ta=teamByNames(a),tb=teamByNames(b);if(!ta||!tb||ta.id===tb.id||sameWoman(ta,tb))return [];const key=[ta.id,tb.id].sort().join('|');if(seen.has(key))return [];seen.add(key);out.push([ta.id,tb.id])}return out}
   // Nữ đánh 2 đội: hai đội chung một nữ không đấu với nhau, và các trận có nữ đó phải cách nhau ít nhất 1 trận.
   function sharedWomanIds(){const c=new Map();for(const t of state.teams){const k=womanKey(t);if(k)c.set(k,(c.get(k)||0)+1)}return new Set([...c].filter(([,k])=>k>1).map(([w])=>w))}
   function sameWoman(a,b){const k=womanKey(a);return !!k&&k===womanKey(b)}
@@ -600,10 +606,12 @@ tbody tr.top{background:#edfbf7}
   // bỏ qua trận làm nữ dùng chung phải đánh hai trận liền nhau. Bí đường thì thử lại, tối đa 300 lần.
   function makeSchedule(){
     const n=state.teams.length;if(n<2)return [];
-    const shared=sharedWomanIds(),pairs=schedulablePairs();
+    const shared=sharedWomanIds(),pinned=pinnedOpening(),pinnedKeys=new Set(pinned.map(p=>[...p].sort().join('|')));
+    const pairs=schedulablePairs().filter(p=>!pinnedKeys.has([...p].sort().join('|')));
     const womenOf=p=>new Set(p.map(tid=>womanKey(getTeam(tid))).filter(w=>w&&shared.has(w)));
     const attempt=strict=>{
-      const left=shuffled(pairs),order=[],last=new Map();let prev=new Set();
+      const left=shuffled(pairs),order=pinned.map(p=>[...p]),last=new Map();let prev=new Set();
+      order.forEach((p,i)=>{last.set(p[0],i);last.set(p[1],i);prev=womenOf(p)});
       while(left.length){
         const ok=left.filter(p=>!strict||![...womenOf(p)].some(w=>prev.has(w)));
         if(!ok.length)return null;
@@ -617,7 +625,7 @@ tbody tr.top{background:#edfbf7}
     let order=null;for(let i=0;i<300&&!order;i++)order=attempt(true);
     const relaxed=!order;if(relaxed)order=attempt(false);
     const perRound=Math.max(1,Math.floor(n/2));
-    const matches=order.map(([a,b],i)=>{const flip=randIndex(2)===1;return {id:id(),aId:flip?b:a,bId:flip?a:b,round:Math.floor(i/perRound)+1,sets:null,scoreA:null,scoreB:null}});
+    const matches=order.map(([a,b],i)=>{const flip=i>=pinned.length&&randIndex(2)===1;return {id:id(),aId:flip?b:a,bId:flip?a:b,round:Math.floor(i/perRound)+1,sets:null,scoreA:null,scoreB:null}});
     matches.relaxed=relaxed;return matches;
   }
   $('createSchedule').onclick=async()=>{if(spinning)return;if(state.teams.length<2){notify('Cần ít nhất 2 đội để tổ chức vòng tròn.','error');return}if(canDrawTeam()){notify('Vẫn còn VĐV đủ để ghép thêm đội nam–nữ hoặc đôi nam. Hãy bốc thăm trước.','error');return}if(state.matches.length){if(!await askConfirmation('Tạo lịch mới sẽ thay thế lịch thi đấu hiện tại và xóa TOÀN BỘ kết quả đã nhập.', 'Tạo lại lịch thi đấu?', 'Tạo lịch mới'))return}state.matches=makeSchedule();const relaxed=state.matches.relaxed;update();notify(relaxed?`Đã tạo ${state.matches.length} trận nhưng không tránh được việc nữ đánh 2 đội phải đánh liền nhau. Hãy bấm tạo lại lịch.`:`Đã tạo ${state.matches.length} trận vòng tròn. Mỗi đội gặp nhau đúng 1 lần${sharedWomanIds().size?' (trừ hai đội chung một nữ)':''}.`,relaxed?'error':'info');publishToWeb(true)};
