@@ -20,4 +20,10 @@ Bật Pages một lần: **Settings → Pages → Build and deployment → Sourc
 - Cập nhật tự động: nút **🌐 Đăng lên web** (và mỗi lần **Tạo lịch thi đấu**) ghi dữ liệu hiện tại vào `data.json` trên GitHub, CI tự triển khai lại sau khoảng 1–2 phút. Lần đầu cần dán token: tạo tại https://github.com/settings/personal-access-tokens/new (Fine-grained, chỉ chọn repo này, quyền **Contents: Read and write**). Token chỉ lưu trong trình duyệt của BTC.
 - Cập nhật thủ công: bấm **Sao lưu**, đổi tên file tải về thành `data.json`, thay vào repo rồi push vào `main`.
 
+## Dùng trên điện thoại
+
+- Giao diện tự co theo màn hình: thanh tab nằm dưới đáy, bảng xếp hạng rút gọn cột.
+- Cài lên màn hình chính: Android (Chrome) menu ⋮ → **Cài đặt ứng dụng** / **Thêm vào màn hình chính**; iPhone (Safari) nút Chia sẻ → **Thêm vào Màn hình chính**.
+- Nhập liệu trên điện thoại: mở `https://chienzbi.github.io/web-cau-long/?edit`. Dữ liệu chỉnh sửa lưu trong trình duyệt của điện thoại đó.
+
 Chạy kiểm tra trên máy: `node scripts/check.js`

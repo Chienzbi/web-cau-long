@@ -33,6 +33,17 @@ if (fs.existsSync(dataFile)) {
   } catch (e) { errors.push('data.json không đọc được: ' + e.message); }
 }
 
+// 4. manifest.webmanifest (cài lên màn hình chính): JSON hợp lệ, icon và sw.js tồn tại.
+const root = path.join(__dirname, '..');
+if (fs.existsSync(path.join(root, 'manifest.webmanifest'))) {
+  try {
+    const mf = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
+    for (const ic of mf.icons || []) if (!fs.existsSync(path.join(root, ic.src))) errors.push(`manifest tham chiếu icon không tồn tại: ${ic.src}`);
+    if (!fs.existsSync(path.join(root, 'sw.js'))) errors.push('Thiếu sw.js.');
+    console.log(`✓ manifest: ${(mf.icons || []).length} icon, sw.js có mặt.`);
+  } catch (e) { errors.push('manifest.webmanifest không đọc được: ' + e.message); }
+}
+
 if (errors.length) {
   console.error(errors.map(e => '✗ ' + e).join('\n'));
   process.exit(1);
